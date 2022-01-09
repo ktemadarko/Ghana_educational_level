@@ -8,4 +8,12 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+## Learning Inequalities in Ghana
+
+#### Data Availability
+
+The data for this visualization of educational facilities in Ghana was provided by the Humanitarian Open Street Map. (last updated on 1st July, 2020)
+
+Data downloaded from the [Humanitarian Data Exchange](https://data.humdata.org/dataset/hotosm_gha_education_facilities "Humanitarian OpenStreetMap") on 7th January, 2022.
+
+#### Analyses

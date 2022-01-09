@@ -7,4 +7,10 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+#### Describe your project.
+
+#### Objectives of the StepUpEd Project
+
+-   Use Geospatial data to determine the specific locations where learning inequalities are in Ghana
+
+-   Using HOTOSM data map educational facilities in Ghana.\
