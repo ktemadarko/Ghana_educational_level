@@ -15,15 +15,18 @@ Following Gecomputation with R by Robin Lovelace Chapter 2.
 #### Load packages and data
 
 ```{r packages, include=FALSE}
-pacman::p_load(tidyverse,tiylog, shiny, flextable,geocompkg, spData, spDataLarge, terra,tmap,sf, magrittr)
+pacman::p_load(tidyverse,tidylog, shiny, flextable,geocompkg, spData, spDataLarge, terra,tmap,sf, magrittr)
 
 ```
 
 ```{r load_data, include=FALSE}
-edu_facilities<-st_read("C:/Users/LENOVO/Documents/Ama_Owusu-Darko_RCode_sample/Ghana_educational_level/data/hotosm_gha_education_facilities_gpkg/hotosm_gha_education_facilities.gpkg")
+edu_facilities<-st_read("data/hotosm_gha_education_facilities_gpkg/hotosm_gha_education_facilities.gpkg")
+```
 
-#check what packages are loaded
-gdalUtils::ogrinfo("C:/Users/LENOVO/Documents/Ama_Owusu-Darko_RCode_sample/Ghana_educational_level/data/hotosm_gha_education_facilities_gpkg/hotosm_gha_education_facilities.gpkg") |> 
+
+```{r #check_what_geolayers_are_loaded, eval=FALSE, include=FALSE}
+
+gdalUtils::ogrinfo("data/hotosm_gha_education_facilities_gpkg/hotosm_gha_education_facilities.gpkg") |> 
   cat(sep="\n")
 ```
 
