@@ -15,17 +15,18 @@ Following Gecomputation with R by Robin Lovelace Chapter 2.
 #### Load packages and data
 
 ```{r packages, include=FALSE}
-pacman::p_load(tidyverse,tidylog, shiny, flextable,geocompkg, spData, spDataLarge, terra,tmap,sf, magrittr)
+pacman::p_load(tidyverse,tidylog, shiny, flextable,tmap,sf, magrittr)
+#,geocompkg, spData, spDataLarge, terra,
 
 ```
 
-```{r load_data, include=FALSE}
+```{r load_data, message=FALSE, warning=FALSE, include=FALSE}
 edu_facilities<-st_read("data/hotosm_gha_education_facilities_gpkg/hotosm_gha_education_facilities.gpkg")
 ```
 
 
-```{r #check_what_geolayers_are_loaded, eval=FALSE, include=FALSE}
-
+```{r geolayers, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+#check what layers are loaded
 gdalUtils::ogrinfo("data/hotosm_gha_education_facilities_gpkg/hotosm_gha_education_facilities.gpkg") |> 
   cat(sep="\n")
 ```
@@ -101,10 +102,8 @@ summary(edu_new$amenity)
 
 *Load Ghana administrativee boundaries*
 
-```{r load_gha, eval=FALSE, include=FALSE}
-gh_adm2<-read_sf("data/gha_admin_shp/gha_admbnda_adm2_gss_20210308.shp")
-
-qtm(gh_adm2)
+```{r load_gha, echo=TRUE}
+source("code/Ghana_admin2_map.R")
 ```
 
 This R Markdown document is made interactive using Shiny. Unlike the more traditional workflow of creating static reports, you can now create documents that allow your readers to change the assumptions underlying your analysis and see the results immediately.
@@ -115,22 +114,16 @@ To learn more, see [Interactive Documents](http://rmarkdown.rstudio.com/authorin
 
 You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change. This demonstrates how a standard R plot can be made interactive by wrapping it in the Shiny `renderPlot` function. The `selectInput` and `sliderInput` functions create the input widgets used to drive the plot.
 
-```{r eruptions, echo=FALSE}
+```{r eruptions, eval=FALSE, include=FALSE}
 
 inputPanel(
-  selectInput("n_breaks", label = "Number of bins:",
-              choices = c(10, 20, 35, 50), selected = 20),
-  
-  sliderInput("bw_adjust", label = "Bandwidth adjustment:",
-              min = 0.2, max = 2, value = 1, step = 0.2)
+  selectInput("region", "Region", choices=levels(choices_reg),
+                       multiple=F, selectize=T),
+  radioButtons("school", "School", choices=levels(edu_new$amenity)) 
 )
 
 renderPlot({
-  hist(faithful$eruptions, probability = TRUE, breaks = as.numeric(input$n_breaks),
-       xlab = "Duration (minutes)", main = "Geyser eruption duration")
-  
-  dens <- density(faithful$eruptions, adjust = input$bw_adjust)
-  lines(dens, col = "blue")
+  tm_shape
 })
 ```
 
@@ -138,13 +131,12 @@ renderPlot({
 
 It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function. This example embeds a Shiny application located in another directory:
 
-```{r tabsets, echo=FALSE}
-shinyAppDir(
-  system.file("examples/06_tabsets", package = "shiny"),
+```{r shiny_app, echo=FALSE}
+shinyAppFile("code/Distribution_of_schools_in_Ghana/app.R",
   options = list(
     width = "100%", height = 550
-  )
-)
+  ))
+
 ```
 
 Note the use of the `height` parameter to determine how much vertical space the embedded application should occupy.
