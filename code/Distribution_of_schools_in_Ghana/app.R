@@ -20,9 +20,10 @@ ui <- fluidPage(
         sidebarPanel(
           helpText("Create maps displaying the different types of education facilities in Ghana."),
 
-          selectInput("region", "Region", choices=levels(choices_reg),
+          selectInput("region", "Region", choices=levels(choices_reg),selected = "Greater Accra",
                        multiple=F, selectize=T),
-          radioButtons("school", "School", choices=levels(edu_new$amenity))),
+          radioButtons("school", "School", choices=levels(edu_new$amenity), selected="Primary")),
+          #DTOutput("count_table")),
 
         # Show a plot of the generated distribution
       mainPanel(
@@ -36,10 +37,16 @@ server <- function(input, output) {
 
     output$tmap <- renderTmap({
        # tm_shape(gh_adm0)+tm_borders()+ # the national borders
-        map1=tm_shape(choose_region(input$region))+tm_polygons(id="ADM2_EN",col="ADM1_EN",palette="RdPu")#+tm_text("ADM1_EN")
-        map2=tm_shape(choose_school(input$school))+tm_symbols(id="name",size=0.1,col="amenity", palette = "magma")#+tm_text("name")
+        map1=tm_shape(choose_region(input$region))+tm_polygons(id="ADM2_EN",col="ADM1_EN",palette="RdPu")#tm_text("ADM1_EN")
+        map2=tm_shape(choose_school(input$school))+tm_symbols(id="name",size=0.1,col="amenity", palette = "viridis")#tm_text("name")
         map1+map2
     })
+    #cant count number of schools in region because edu_new has no region column
+
+    #cntable=function(x){
+      #filter(edu_new,)
+    #}
+    #output$count_table=renderDT()
 }
 
 # Run the application

@@ -21,9 +21,8 @@ pacman::p_load(tidyverse,tidylog, shiny, flextable,tmap,sf, magrittr)
 ```
 
 ```{r load_data, message=FALSE, warning=FALSE, include=FALSE}
-edu_facilities<-st_read("data/hotosm_gha_education_facilities_gpkg/hotosm_gha_education_facilities.gpkg")
+edu_facilities<-read_sf("data/hotosm_gha_edu_facilities_points_shp/hotosm_gha_education_facilities_points.shp")
 ```
-
 
 ```{r geolayers, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 #check what layers are loaded
@@ -73,10 +72,16 @@ The initial data set contained the geolocations of 5,502 educational facilities 
 Also, amenity was converted from character column to a factor column
 
 ```{r create_df_without_NA_in_name_or_amentity}
-edu_new<-edu_facilities |> 
+edu_new<-na_name(edu_facilities)
+
+edu_n1<-na_name(try)
+edu_n2<-na_name(polygon)
+#checking about duplicates
+na_name=function(x){
+   x|> 
    mutate(across(c(amenity),factor))|> 
    filter(!is.na(name),
-         !is.na(amenity))
+         !is.na(amenity))}
 
 #drop unused levels
 edu_new%<>%
