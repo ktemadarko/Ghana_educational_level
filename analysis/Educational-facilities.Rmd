@@ -20,7 +20,7 @@ pacman::p_load(tidyverse,tidylog, shiny, flextable,tmap,sf, magrittr)
 
 ```
 
-```{r load_data, message=FALSE, warning=FALSE, include=FALSE}
+```{r load_data, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 edu_facilities<-read_sf("data/hotosm_gha_edu_facilities_points_shp/hotosm_gha_education_facilities_points.shp")
 ```
 
@@ -34,7 +34,7 @@ gdalUtils::ogrinfo("data/hotosm_gha_education_facilities_gpkg/hotosm_gha_educati
 
 Checking what columns/ features are present in the data set.
 
-```{r}
+```{r include=FALSE}
 source("code/Ghana_admin2_map.R")
 names(edu_facilities)
 ```
@@ -121,13 +121,11 @@ To learn more, see [Interactive Documents](http://rmarkdown.rstudio.com/authorin
 
 ## Embedded Application
 
-It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function. This example embeds a Shiny application located in another directory:
+It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function. This example embeds a [Shiny application](https://aowusuda.shinyapps.io/Step_up_education_in_Ghana/) located in another directory:
 
 ```{r shiny_app, echo=FALSE}
-shinyAppFile("code/Distribution_of_schools_in_Ghana/app.R",
-  options = list(
-    width = "100%", height = 550
-  ))
+
+knitr::include_app("https://aowusuda.shinyapps.io/Step_up_education_in_Ghana/")
 
 ```
 
