@@ -36,12 +36,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="shared/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="shared/selectize/js/selectize.min.js"></script>
-<script src="shared/selectize/accessibility/js/selectize-plugin-a11y.min.js"></script>
-<script src="shared/ionrangeslider/js/ion.rangeSlider.min.js"></script>
-<script src="shared/strftime/strftime-min.js"></script>
-<link href="shared/ionrangeslider/css/ion.rangeSlider.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -367,7 +361,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -376,7 +370,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -385,10 +379,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-01-09
+<strong>Last updated:</strong> 2022-01-11
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Ghana_educational_level/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -404,12 +398,12 @@ This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysi
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="section-strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="section-strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has staged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -476,24 +470,48 @@ This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysi
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltree93e3d77c61cfd9ccf08391c7055dba171db475bctargetblank93e3d77a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/93e3d77c61cfd9ccf08391c7055dba171db475bc" target="_blank">93e3d77</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltree13a77fe7ff6afddda9c4ef3d1730a0923f71c73atargetblank13a77fea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/13a77fe7ff6afddda9c4ef3d1730a0923f71c73a" target="_blank">13a77fe</a> </a>
 </p>
 </div>
-<div id="section-strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltree93e3d77c61cfd9ccf08391c7055dba171db475bctargetblank93e3d77a" class="panel-collapse collapse">
+<div id="section-strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltree13a77fe7ff6afddda9c4ef3d1730a0923f71c73atargetblank13a77fea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/93e3d77c61cfd9ccf08391c7055dba171db475bc" target="_blank">93e3d77</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/13a77fe7ff6afddda9c4ef3d1730a0923f71c73a" target="_blank">13a77fe</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .Rproj.user/50C4F09C/
-    Ignored:    .Rproj.user/shared/notebooks/2A4DA3E8-Educational-facilities/
+    Ignored:    .Rproj.user/6D3A2E0A/bibliography-index/
+    Ignored:    .Rproj.user/6D3A2E0A/ctx/
+    Ignored:    .Rproj.user/6D3A2E0A/explorer-cache/
+    Ignored:    .Rproj.user/6D3A2E0A/presentation/
+    Ignored:    .Rproj.user/6D3A2E0A/profiles-cache/
+    Ignored:    .Rproj.user/6D3A2E0A/sources/
+    Ignored:    .Rproj.user/6D3A2E0A/tutorial/
+    Ignored:    .Rproj.user/6D3A2E0A/unsaved-notebooks/
+    Ignored:    .Rproj.user/6D3A2E0A/viewer-cache/
+    Ignored:    .Rproj.user/6D3A2E0A/viewer_history/
+    Ignored:    .Rproj.user/shared/notebooks/18F66FD1-index/
+    Ignored:    .Rproj.user/shared/notebooks/9EAF1FE1-Educational-facilities/
+
+Untracked files:
+    Untracked:  code/School attendance data.R
+
+Unstaged changes:
+    Modified:   analysis/Educational-facilities.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   code/Ghana_admin2_map.R
+
+Staged changes:
+    Modified:   analysis/Educational-facilities.Rmd
+    Modified:   code/Ghana_admin2_map.R
+    New:        data/GHA_2021_Census_Literacy Data.xlsx
+    New:        data/GHA_2021_Census_Pop_3yrs_school_attendance.csv
 
 </code></pre>
 <p>
@@ -532,6 +550,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ktemadarko/Ghana_educational_level/blob/13a77fe7ff6afddda9c4ef3d1730a0923f71c73a/analysis/Educational-facilities.Rmd" target="_blank">13a77fe</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-10
+</td>
+<td>
+app in progress to Lenovo branch
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ktemadarko/Ghana_educational_level/blob/d25967b3d9d499047653eb939444c974a8bca52e/analysis/Educational-facilities.Rmd" target="_blank">d25967b</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-10
+</td>
+<td>
+shiny app added
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/ktemadarko/Ghana_educational_level/7b9aa6d53c1b87e5a8468c7b54d25981edf9b0f9/docs/Educational-facilities.html" target="_blank">7b9aa6d</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-09
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -632,19 +701,18 @@ wflow_publish(c("analysis/Educational-facilities.Rmd"))
 <h4>Data Cleaning</h4>
 <p>Checking what columns/ features are present in the data set.</p>
 <pre class="r"><code>names(edu_facilities)</code></pre>
-<pre><code> [1] &quot;osm_id&quot;           &quot;building&quot;         &quot;name&quot;             &quot;source&quot;          
- [5] &quot;addr.city&quot;        &quot;amenity&quot;          &quot;operator.type&quot;    &quot;addr.full&quot;       
- [9] &quot;capacity.persons&quot; &quot;Comments&quot;         &quot;geom&quot;            </code></pre>
+<pre><code> [1] &quot;osm_id&quot;     &quot;building&quot;   &quot;name&quot;       &quot;source&quot;     &quot;addrcity&quot;  
+ [6] &quot;amenity&quot;    &quot;operatorty&quot; &quot;addrfull&quot;   &quot;capacitype&quot; &quot;geometry&quot;  </code></pre>
 <p>The name column is the name of the school and the “amenity” column shows what type of school it is.</p>
 <p><em>Identifying if there are NA values in the name and amenity columns</em></p>
 <pre class="r"><code>#check names that are NA
 summary(is.na(edu_facilities$name))</code></pre>
 <pre><code>   Mode   FALSE    TRUE 
-logical    3474    2028 </code></pre>
+logical    1947     477 </code></pre>
 <pre class="r"><code>#check amenity that are NA
 summary(is.na(edu_facilities$amenity))</code></pre>
 <pre><code>   Mode   FALSE    TRUE 
-logical    3745    1757 </code></pre>
+logical    2416       8 </code></pre>
 <p><em>Changing the value of amenity from School to Primary for (basic, preparatory, primary schools)</em></p>
 <pre class="r"><code>#change to title case
 edu_facilities$amenity&lt;-str_to_title(edu_facilities$amenity)
@@ -656,61 +724,50 @@ edu_facilities$amenity&lt;-if_else((str_detect(edu_facilities$name,
 #summary(edu_facilities$amenity)</code></pre>
 <p>The initial data set contained the geolocations of 5,502 educational facilities in Ghana. Using the code block below, 2376 rows were removed that had NA in both name and amenity columns. Thus, the resulting data set set has 3126 rows.</p>
 <p>Also, amenity was converted from character column to a factor column</p>
-<pre class="r"><code>edu_new&lt;-edu_facilities |&gt; 
-   mutate(across(c(amenity),factor))|&gt; 
-   filter(!is.na(name),
-         !is.na(amenity))</code></pre>
+<pre class="r"><code>source(&quot;code/Ghana_admin2_map.R&quot;)</code></pre>
+<pre><code>tmap mode set to interactive viewing</code></pre>
+<pre class="r"><code>edu_new&lt;-na_name(edu_facilities)</code></pre>
 <pre><code>mutate: converted &#39;amenity&#39; from character to factor (0 new NA)</code></pre>
-<pre><code>filter: removed 2,302 rows (42%), 3,200 rows remaining</code></pre>
-<pre class="r"><code>#drop unused levels
+<pre><code>filter: removed 1,892 rows (61%), 1,186 rows remaining</code></pre>
+<pre class="r"><code>#edu_n1&lt;-na_name(try)
+#edu_n2&lt;-na_name(polygon)
+#checking about duplicates
+
+
+#drop unused levels
 edu_new%&lt;&gt;%
    mutate(across(c(amenity),droplevels))</code></pre>
-<pre><code>mutate: no changes</code></pre>
+<pre><code>mutate: changed 0 values (0%) of &#39;amenity&#39; (0 new NA)</code></pre>
 <pre class="r"><code>#summary(is.na(edu_new$name))
 
 #summary(is.na(edu_new$amenity))</code></pre>
 <p><em>Check current categories of amenity column</em></p>
 <pre class="r"><code>summary(edu_new$amenity)</code></pre>
-<pre><code>     College Kindergarten      Library      Primary       School   University 
-         139          122            3          854         2023           59 </code></pre>
+<pre><code>     college kindergarten      library       school   university 
+          75           28            3         1029           51 </code></pre>
 <pre class="r"><code>#changing name of amenity level &quot;school&quot; to Primary 1-Secondary 12
 
 #levels(edu_name_not_null$amenity)&lt;- c(&quot;College&quot;,&quot;&quot;)</code></pre>
-<p><em>Load Ghana administrativee boundaries</em></p>
+<p><em>Load Ghana administrative boundaries</em></p>
+<pre class="r"><code>source(&quot;code/School attendance data.R&quot;)</code></pre>
+<pre><code>Rows: 64 Columns: 7</code></pre>
+<pre><code>-- Column specification --------------------------------------------------------
+Delimiter: &quot;,&quot;
+chr (3): Region, Gender, Locality</code></pre>
+<pre><code>
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>This R Markdown document is made interactive using Shiny. Unlike the more traditional workflow of creating static reports, you can now create documents that allow your readers to change the assumptions underlying your analysis and see the results immediately.</p>
 <p>To learn more, see <a href="http://rmarkdown.rstudio.com/authoring_shiny.html">Interactive Documents</a>.</p>
 </div>
 <div id="section-inputs-and-outputs" class="section level2">
 <h2>Inputs and Outputs</h2>
 <p>You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change. This demonstrates how a standard R plot can be made interactive by wrapping it in the Shiny <code>renderPlot</code> function. The <code>selectInput</code> and <code>sliderInput</code> functions create the input widgets used to drive the plot.</p>
-<div class="shiny-input-panel">
-<div class="shiny-flow-layout">
-<div>
-<div class="form-group shiny-input-container">
-<label class="control-label" id="n_breaks-label" for="n_breaks">Number of bins:</label>
-<div>
-<select id="n_breaks"><option value="10">10</option>
-<option value="20" selected>20</option>
-<option value="35">35</option>
-<option value="50">50</option></select>
-<script type="application/json" data-for="n_breaks" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
-</div>
-</div>
-</div>
-<div>
-<div class="form-group shiny-input-container">
-<label class="control-label" id="bw_adjust-label" for="bw_adjust">Bandwidth adjustment:</label>
-<input class="js-range-slider" id="bw_adjust" data-skin="shiny" data-min="0.2" data-max="2" data-from="1" data-step="0.2" data-grid="true" data-grid-num="9" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number"/>
-</div>
-</div>
-</div>
-</div>
-<p><div id="out69ea2e6d0ebea86b" class="shiny-plot-output" style="width:100%;height:400px;"></div></p>
 </div>
 <div id="section-embedded-application" class="section level2">
 <h2>Embedded Application</h2>
 <p>It’s also possible to embed an entire Shiny application within an R Markdown document using the <code>shinyAppDir</code> function. This example embeds a Shiny application located in another directory:</p>
-<p><iframe data-deferred-src="appf837a7ec4d4ba3d79527a9605e155863/?w=&amp;__subapp__=1" width="100%" height="550" class="shiny-frame shiny-frame-deferred"></iframe></p>
+<p><iframe data-deferred-src="app580a5a2aad90529404f516a03cd62ad3/?w=&amp;__subapp__=1" width="100%" height="550" class="shiny-frame shiny-frame-deferred"></iframe></p>
 <p>Note the use of the <code>height</code> parameter to determine how much vertical space the embedded application should occupy.</p>
 <p>You can also use the <code>shinyApp</code> function to define an application inline rather then in an external directory.</p>
 <p>In all of R code chunks above the <code>echo = FALSE</code> attribute is used. This is to prevent the R code within the chunk from rendering in the document alongside the Shiny components.</p>
@@ -724,7 +781,7 @@ edu_new%&lt;&gt;%
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>R version 4.1.2 (2021-11-01)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
-Running under: Windows 10 x64 (build 19042)
+Running under: Windows 10 x64 (build 22000)
 
 Matrix products: default
 
@@ -739,47 +796,48 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] magrittr_2.0.1   sf_1.0-3         tmap_3.3-2       terra_1.4-11    
- [5] spData_2.0.1     flextable_0.6.10 shiny_1.7.1      tidylog_1.0.2   
- [9] forcats_0.5.1    stringr_1.4.0    dplyr_1.0.7      purrr_0.3.4     
-[13] readr_2.0.2      tidyr_1.1.4      tibble_3.1.5     ggplot2_3.3.5   
-[17] tidyverse_1.3.1  workflowr_1.7.0 
+ [1] DT_0.20          magrittr_2.0.1   sf_1.0-5         tmap_3.3-3      
+ [5] flextable_0.6.10 shiny_1.7.1      tidylog_1.0.2    forcats_0.5.1   
+ [9] stringr_1.4.0    dplyr_1.0.7      purrr_0.3.4      readr_2.1.1     
+[13] tidyr_1.1.4      tibble_3.1.6     ggplot2_3.3.5    tidyverse_1.3.1 
+[17] workflowr_1.7.0 
 
 loaded via a namespace (and not attached):
   [1] leafem_0.1.6       colorspace_2.0-2   ellipsis_0.3.2    
   [4] class_7.3-19       leaflet_2.0.4.1    rprojroot_2.0.2   
-  [7] base64enc_0.1-3    fs_1.5.0           dichromat_2.0-0   
- [10] rstudioapi_0.13    proxy_0.4-26       fansi_0.5.0       
- [13] lubridate_1.8.0    xml2_1.3.2         codetools_0.2-18  
- [16] knitr_1.36         jsonlite_1.7.2     tmaptools_3.1-1   
- [19] broom_0.7.10       dbplyr_2.1.1       png_0.1-7         
- [22] compiler_4.1.2     httr_1.4.2         backports_1.3.0   
- [25] assertthat_0.2.1   fastmap_1.1.0      cli_3.1.0         
- [28] later_1.3.0        htmltools_0.5.2    tools_4.1.2       
- [31] gtable_0.3.0       glue_1.4.2         Rcpp_1.0.7        
- [34] cellranger_1.1.0   jquerylib_0.1.4    raster_3.5-2      
- [37] vctrs_0.3.8        leafsync_0.1.0     crosstalk_1.2.0   
- [40] lwgeom_0.2-8       xfun_0.27          ps_1.6.0          
- [43] rvest_1.0.2        mime_0.12          lifecycle_1.0.1   
- [46] pacman_0.5.1       XML_3.99-0.8       getPass_0.2-2     
- [49] scales_1.1.1       clisymbols_1.2.0   hms_1.1.1         
- [52] promises_1.2.0.1   parallel_4.1.2     RColorBrewer_1.1-2
- [55] yaml_2.2.1         gdtools_0.2.3      sass_0.4.0        
- [58] stringi_1.7.5      e1071_1.7-9        zip_2.2.0         
- [61] rlang_0.4.12       pkgconfig_2.0.3    systemfonts_1.0.3 
- [64] evaluate_0.14      lattice_0.20-45    htmlwidgets_1.5.4 
- [67] processx_3.5.2     tidyselect_1.1.1   R6_2.5.1          
- [70] generics_0.1.1     DBI_1.1.1          pillar_1.6.4      
- [73] haven_2.4.3        whisker_0.4        withr_2.4.2       
- [76] units_0.7-2        stars_0.5-3        abind_1.4-5       
- [79] sp_1.4-5           modelr_0.1.8       crayon_1.4.2      
- [82] uuid_1.0-2         KernSmooth_2.23-20 utf8_1.2.2        
- [85] tzdb_0.2.0         rmarkdown_2.11     officer_0.4.1     
- [88] grid_4.1.2         readxl_1.3.1       data.table_1.14.2 
- [91] callr_3.7.0        git2r_0.29.0       reprex_2.0.1      
- [94] digest_0.6.28      classInt_0.4-3     xtable_1.8-4      
- [97] httpuv_1.6.3       munsell_0.5.0      viridisLite_0.4.0 
-[100] bslib_0.3.1       </code></pre>
+  [7] base64enc_0.1-3    fs_1.5.2           dichromat_2.0-0   
+ [10] rstudioapi_0.13    proxy_0.4-26       bit64_4.0.5       
+ [13] fansi_0.5.0        lubridate_1.8.0    xml2_1.3.3        
+ [16] codetools_0.2-18   knitr_1.37         jsonlite_1.7.2    
+ [19] tmaptools_3.1-1    broom_0.7.10       dbplyr_2.1.1      
+ [22] png_0.1-7          compiler_4.1.2     httr_1.4.2        
+ [25] backports_1.4.1    assertthat_0.2.1   fastmap_1.1.0     
+ [28] cli_3.1.0          later_1.3.0        htmltools_0.5.2   
+ [31] tools_4.1.2        gtable_0.3.0       glue_1.6.0        
+ [34] Rcpp_1.0.7         raster_3.5-11      cellranger_1.1.0  
+ [37] jquerylib_0.1.4    vctrs_0.3.8        leafsync_0.1.0    
+ [40] crosstalk_1.2.0    lwgeom_0.2-8       xfun_0.29         
+ [43] ps_1.6.0           rvest_1.0.2        mime_0.12         
+ [46] lifecycle_1.0.1    pacman_0.5.1       XML_3.99-0.8      
+ [49] terra_1.5-9        getPass_0.2-2      scales_1.1.1      
+ [52] vroom_1.5.7        clisymbols_1.2.0   hms_1.1.1         
+ [55] promises_1.2.0.1   parallel_4.1.2     RColorBrewer_1.1-2
+ [58] yaml_2.2.1         gdtools_0.2.3      sass_0.4.0        
+ [61] stringi_1.7.6      e1071_1.7-9        zip_2.2.0         
+ [64] rlang_0.4.12       pkgconfig_2.0.3    systemfonts_1.0.3 
+ [67] lattice_0.20-45    evaluate_0.14      htmlwidgets_1.5.4 
+ [70] bit_4.0.4          processx_3.5.2     tidyselect_1.1.1  
+ [73] R6_2.5.1           generics_0.1.1     DBI_1.1.2         
+ [76] pillar_1.6.4       haven_2.4.3        whisker_0.4       
+ [79] withr_2.4.3        units_0.7-2        stars_0.5-5       
+ [82] sp_1.4-6           abind_1.4-5        modelr_0.1.8      
+ [85] crayon_1.4.2       uuid_1.0-3         KernSmooth_2.23-20
+ [88] utf8_1.2.2         tzdb_0.2.0         rmarkdown_2.11    
+ [91] officer_0.4.1      grid_4.1.2         readxl_1.3.1      
+ [94] data.table_1.14.2  callr_3.7.0        git2r_0.29.0      
+ [97] reprex_2.0.1       digest_0.6.29      classInt_0.4-3    
+[100] xtable_1.8-4       httpuv_1.6.4       munsell_0.5.0     
+[103] viridisLite_0.4.0  bslib_0.3.1       </code></pre>
 </div>
 </div>
 

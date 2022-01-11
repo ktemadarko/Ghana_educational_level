@@ -105,7 +105,7 @@ summary(edu_new$amenity)
 #levels(edu_name_not_null$amenity)<- c("College","")
 ```
 
-*Load Ghana administrativee boundaries*
+*Load Ghana administrative boundaries*
 
 ```{r load_gha, echo=TRUE}
 source("code/Ghana_admin2_map.R")
