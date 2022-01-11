@@ -500,16 +500,20 @@ Ignored files:
     Ignored:    .Rproj.user/shared/notebooks/9EAF1FE1-Educational-facilities/
 
 Untracked files:
-    Untracked:  code/School attendance data.R
+    Untracked:  code/testing_plots_code.R
 
 Unstaged changes:
     Modified:   analysis/Educational-facilities.Rmd
-    Modified:   analysis/index.Rmd
+    Modified:   code/Distribution_of_schools_in_Ghana/app.R
     Modified:   code/Ghana_admin2_map.R
+    Modified:   code/School attendance data.R
+    Modified:   data/GHA_2021_Census_Pop_3yrs_school_attendance.csv
 
 Staged changes:
     Modified:   analysis/Educational-facilities.Rmd
+    Modified:   analysis/index.Rmd
     Modified:   code/Ghana_admin2_map.R
+    New:        code/School attendance data.R
     New:        data/GHA_2021_Census_Literacy Data.xlsx
     New:        data/GHA_2021_Census_Pop_3yrs_school_attendance.csv
 
@@ -753,21 +757,24 @@ edu_new%&lt;&gt;%
 <pre><code>Rows: 64 Columns: 7</code></pre>
 <pre><code>-- Column specification --------------------------------------------------------
 Delimiter: &quot;,&quot;
-chr (3): Region, Gender, Locality</code></pre>
+chr (3): ADM1_EN, Gender, Locality</code></pre>
 <pre><code>
 i Use `spec()` to retrieve the full column specification for this data.
 i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre><code>mutate: new variable &#39;Percent_dropout&#39; (double) with 63 unique values and 0% NA</code></pre>
+<pre><code>        new variable &#39;Percent_Currently_in_School&#39; (double) with 64 unique values and 0% NA</code></pre>
+<pre><code>        new variable &#39;Percent_Never_Attended_School&#39; (double) with 64 unique values and 0% NA</code></pre>
+<pre><code>mutate: converted &#39;ADM1_EN&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;Gender&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;Locality&#39; from character to factor (0 new NA)</code></pre>
 <p>This R Markdown document is made interactive using Shiny. Unlike the more traditional workflow of creating static reports, you can now create documents that allow your readers to change the assumptions underlying your analysis and see the results immediately.</p>
 <p>To learn more, see <a href="http://rmarkdown.rstudio.com/authoring_shiny.html">Interactive Documents</a>.</p>
-</div>
-<div id="section-inputs-and-outputs" class="section level2">
-<h2>Inputs and Outputs</h2>
-<p>You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change. This demonstrates how a standard R plot can be made interactive by wrapping it in the Shiny <code>renderPlot</code> function. The <code>selectInput</code> and <code>sliderInput</code> functions create the input widgets used to drive the plot.</p>
+<p>`</p>
 </div>
 <div id="section-embedded-application" class="section level2">
 <h2>Embedded Application</h2>
 <p>It’s also possible to embed an entire Shiny application within an R Markdown document using the <code>shinyAppDir</code> function. This example embeds a Shiny application located in another directory:</p>
-<p><iframe data-deferred-src="app580a5a2aad90529404f516a03cd62ad3/?w=&amp;__subapp__=1" width="100%" height="550" class="shiny-frame shiny-frame-deferred"></iframe></p>
+<p><iframe data-deferred-src="appa0ec639c81425a6bc23962419ba8aea7/?w=&amp;__subapp__=1" width="100%" height="550" class="shiny-frame shiny-frame-deferred"></iframe></p>
 <p>Note the use of the <code>height</code> parameter to determine how much vertical space the embedded application should occupy.</p>
 <p>You can also use the <code>shinyApp</code> function to define an application inline rather then in an external directory.</p>
 <p>In all of R code chunks above the <code>echo = FALSE</code> attribute is used. This is to prevent the R code within the chunk from rendering in the document alongside the Shiny components.</p>

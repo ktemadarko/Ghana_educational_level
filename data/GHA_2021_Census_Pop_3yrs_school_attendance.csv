@@ -1,4 +1,4 @@
-Region,Currently Attending School,Never Attended School,Dropped out of School,Total,Gender,Locality
+ADM1_EN,Currently_Attending_School,Never_Attended_School,Dropped_out_of_School,Sum_of_Respondents_(3_years_and_above),Gender,Locality
 Western,"205,731","42,868","245,335","493,934",Male,Urban
 Central,"338,218","66,016","341,748","745,982",Male,Urban
 Greater Accra,"858,620","132,635","1,311,926","2,303,181",Male,Urban
