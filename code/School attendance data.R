@@ -16,4 +16,3 @@ gh_school_attend%<>%
 #rename Region to ADM1_EN so can share common functions
 gh_school_attend%<>%
   mutate(across(c(ADM1_EN,Gender,Locality),factor))
-

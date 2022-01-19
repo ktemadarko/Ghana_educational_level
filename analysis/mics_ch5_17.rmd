@@ -1,0 +1,53 @@
+---
+title: "mics_ch5_17"
+author: "ktemadarko"
+date: "2022-01-19"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+pacman::p_load(tidyverse,magrittr,here)
+```
+
+About the data set.
+
+This data set has 8965 observations of 285 variables from the Ghana 2017/18 Multiple Indicator Cluster Survey.
+The data is available to the public with registration at the [<https://mics.unicef.org/surveys>](https://mics.unicef.org/surveys) website.
+
+Each observation represents the responses a mother gave to a questionnaire about her child aged between 5 and 17 in Ghana.
+We focused on the questions about foundational skills of Ghanaian children 5-17 years.
+These questions can be found on pages 574 591 to 619.
+[View Ghana 2017/18 MICS Questionnaire here](https://mics-surveys-prod.s3.amazonaws.com/MICS6/West%20and%20Central%20Africa/Ghana/2017-2018/Survey%20findings/Ghana%202017-18%20MICS%20Survey%20Findings%20Report_English.pdf).
+
+The data is loaded and stored in the variable ch5_17
+
+```{r load_data message=FALSE, warning=FALSE}
+ch5_17 <- read_sav(here::here("data/fs.sav"))
+```
+
+The data was filtered and rows where consent for the interview was not given or the interview was not completed or the interview
+
+```{r}
+ch5_17_mini<- ch5_17%>%
+  #filtering data FS10==1 for consent given and FS17 for interview completed.
+  #FS13==11 means interview in English & FS14==11 means English is the native language of the responder
+                    filter(FS10==1 & FS17==1 & FS13==11 & FS14==11)%>%
+                    select(c(1:6,8),
+                           starts_with("CB"), #child's background
+                           starts_with("PR"), #parental involvement
+                           starts_with("FL")) #foundational skills
+
+
+ch5_17_small<- ch5_17%>%
+  #filtering data FS10==1 for consent given and FS17 for interview completed.
+  #FS13==11 means interview in English & FS14==11 means English is the native language of the responder
+                    filter(FS10==1 & FS17==1 & FS13==11)%>%
+                    select(c(1:6,8),
+                           starts_with("CB"), #child's background
+                           starts_with("PR"), #parental involvement
+                           starts_with("FL")) #foundational skills
+```

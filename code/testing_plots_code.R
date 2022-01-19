@@ -18,6 +18,7 @@ gh_school_attend |>
             position = position_dodge(0.9))+
   scale_fill_viridis_d()+coord_flip()+facet_wrap(~Locality, ncol=2)
 
+
 choose_gender_region=function(x,y){
   gh_school_attend |> filter(Gender==x,
                              ADM1_EN==y)
@@ -92,3 +93,38 @@ inputPanel(
 renderPlot({
   tm_shape
 })
+
+
+try_pivot1<-gh_school_attend |>
+  pivot_wider(names_from=c(Locality),
+              values_from=c(Percent_dropout,Percent_Currently_in_School,
+                            Percent_Never_Attended_School))
+summary(try_pivot1)
+
+#making new dfs for ghanacensus 2021 package
+gh_school_attend_2021<-gh_school_attend%>%
+  rename(Region=ADM1_EN)
+
+gh_school_attend_2021<-gh_school_attend_2021[,c(1,6,7,2,9,3,10,4,8,5)]
+
+
+gh_adm1_geom=gh_adm1 |>
+  rename(Region=ADM1_EN) |>
+  select(c(3,13)) |>
+
+  gh_adm1_geom%<>%
+  mutate(across(c(Region),factor))
+
+gh_school_attend_2021%<>%
+  rename(Percent_Currently_Attending_School=Percent_Currently_in_School,
+         Percent_Dropped_out_of_School=Percent_dropout)
+
+Ghana_2021_school_attendance_geometry=merge(gh_school_attend_2021,gh_adm1_geom, by="Region")
+
+gh_adm1_geom$Region[gh_adm1_geom$Region == "Northern East"]<-"North East"
+
+#save(x, y, file = "xy.RData")
+save(Ghana_2021_school_attendance_geometry, file = "C:/Users/LENOVO/Documents/Rpackages/rGhanaCensus/data/Ghana_2021_school_attendance_geometry.RData")
+
+load("Ghana_educational_level/gh_edu_geom.RData")
+a <- readRDS("stuff.RDS")
