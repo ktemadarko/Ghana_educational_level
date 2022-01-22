@@ -25,7 +25,7 @@ These questions can be found on pages 574, 591 to 619.
 
 The data is loaded and stored in the variable ch5_17
 
-```{r load_data message=FALSE, warning=FALSE}
+```{r load_data, message=FALSE, warning=FALSE}
 ch5_17 <- read_sav(here::here("data/fs.sav"))
 hh <- read_sav(here::here("data/hh.sav"))
 
