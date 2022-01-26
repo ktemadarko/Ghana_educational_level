@@ -20,10 +20,9 @@ pacman::p_load(tidyverse,tidylog, shiny, flextable,tmap,sf, magrittr)
 
 ```
 
-```{r load_data, message=FALSE, warning=FALSE, include=FALSE}
-edu_facilities<-st_read("data/hotosm_gha_education_facilities_gpkg/hotosm_gha_education_facilities.gpkg")
+```{r load_data, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+edu_facilities<-read_sf("data/hotosm_gha_edu_facilities_points_shp/hotosm_gha_education_facilities_points.shp")
 ```
-
 
 ```{r geolayers, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 #check what layers are loaded
@@ -35,7 +34,8 @@ gdalUtils::ogrinfo("data/hotosm_gha_education_facilities_gpkg/hotosm_gha_educati
 
 Checking what columns/ features are present in the data set.
 
-```{r}
+```{r include=FALSE}
+source("code/Ghana_admin2_map.R")
 names(edu_facilities)
 ```
 
@@ -55,7 +55,7 @@ summary(is.na(edu_facilities$amenity))
 
 *Changing the value of amenity from School to Primary for (basic, preparatory, primary schools)*
 
-```{r amenity}
+```{r amenity, eval=FALSE, include=FALSE}
 #change to title case
 edu_facilities$amenity<-str_to_title(edu_facilities$amenity)
 
@@ -68,17 +68,26 @@ edu_facilities$amenity<-if_else((str_detect(edu_facilities$name,
 
 ```
 
-The initial data set contained the geolocations of 5,502 educational facilities in Ghana. Using the code block below, 2376 rows were removed that had NA in both name and amenity columns. Thus, the resulting data set set has 3126 rows.
+The initial data set contained the geolocations of 5,502 educational facilities in Ghana.
+Using the code block below, 2376 rows were removed that had NA in both name and amenity columns.
+Thus, the resulting data set set has 3126 rows.
 
 Also, amenity was converted from character column to a factor column
 
-```{r create_df_without_NA_in_name_or_amentity}
-edu_new<-edu_facilities |> 
-   mutate(across(c(amenity),factor))|> 
-   filter(!is.na(name),
-         !is.na(amenity))
+```{r load_data_processing_code, eval=FALSE, include=FALSE}
+source("code/Ghana_admin2_map.R")
+```
+
+```{r create_df_without_NA_in_name_or_amentity, eval=FALSE, include=FALSE}
+
+
+#edu_n1<-na_name(try)
+#edu_n2<-na_name(polygon)
+#checking about duplicates
+
 
 #drop unused levels
+edu_new<-na_name(edu_facilities)
 edu_new%<>%
    mutate(across(c(amenity),droplevels))
 
@@ -100,42 +109,27 @@ summary(edu_new$amenity)
 #levels(edu_name_not_null$amenity)<- c("College","")
 ```
 
-*Load Ghana administrativee boundaries*
+*Load Ghana administrative boundaries*
 
-```{r load_gha, echo=TRUE}
-source("code/Ghana_admin2_map.R")
+```{r load_school_attendance_data, echo=TRUE}
+source("code/School attendance data.R")
 ```
 
-This R Markdown document is made interactive using Shiny. Unlike the more traditional workflow of creating static reports, you can now create documents that allow your readers to change the assumptions underlying your analysis and see the results immediately.
+This R Markdown document is made interactive using Shiny.
+Unlike the more traditional workflow of creating static reports, you can now create documents that allow your readers to change the assumptions underlying your analysis and see the results immediately.
 
 To learn more, see [Interactive Documents](http://rmarkdown.rstudio.com/authoring_shiny.html).
 
-## Inputs and Outputs
-
-You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change. This demonstrates how a standard R plot can be made interactive by wrapping it in the Shiny `renderPlot` function. The `selectInput` and `sliderInput` functions create the input widgets used to drive the plot.
-
-```{r eruptions, eval=FALSE, include=FALSE}
-
-inputPanel(
-  selectInput("region", "Region", choices=levels(choices_reg),
-                       multiple=F, selectize=T),
-  radioButtons("school", "School", choices=levels(edu_new$amenity)) 
-)
-
-renderPlot({
-  tm_shape
-})
-```
+\`
 
 ## Embedded Application
 
-It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function. This example embeds a Shiny application located in another directory:
+It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function.
+This example embeds a [Shiny application](https://aowusuda.shinyapps.io/Step_up_education_in_Ghana/) located in another directory:
 
 ```{r shiny_app, echo=FALSE}
-shinyAppFile("code/Distribution_of_schools_in_Ghana/app.R",
-  options = list(
-    width = "100%", height = 550
-  ))
+
+knitr::include_app("https://aowusuda.shinyapps.io/Step_up_education_in_Ghana/")
 
 ```
 
@@ -143,4 +137,5 @@ Note the use of the `height` parameter to determine how much vertical space the 
 
 You can also use the `shinyApp` function to define an application inline rather then in an external directory.
 
-In all of R code chunks above the `echo = FALSE` attribute is used. This is to prevent the R code within the chunk from rendering in the document alongside the Shiny components.
+In all of R code chunks above the `echo = FALSE` attribute is used.
+This is to prevent the R code within the chunk from rendering in the document alongside the Shiny components.

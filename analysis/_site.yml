@@ -11,6 +11,8 @@ navbar:
     href: license.html
   - text: Educational facilities
     href: Educational-facilities.html
+  - text: Socio-economic determinants of learning deficiences
+    href: mics_ch5_17.html
 output:
   workflowr::wflow_html:
     toc: yes

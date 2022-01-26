@@ -263,6 +263,9 @@ $(document).ready(function () {
 <li>
   <a href="Educational-facilities.html">Educational facilities</a>
 </li>
+<li>
+  <a href="mics_ch5_17.html">Socio-economic determinants of learning deficiences</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -282,7 +285,7 @@ $(document).ready(function () {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -291,7 +294,7 @@ $(document).ready(function () {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -300,10 +303,10 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-01-09
+<strong>Last updated:</strong> 2022-01-22
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Ghana_educational_level/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -319,36 +322,54 @@ This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysi
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltree93e3d77c61cfd9ccf08391c7055dba171db475bctargetblank93e3d77a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/93e3d77c61cfd9ccf08391c7055dba171db475bc" target="_blank">93e3d77</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltree5eda41bf7937915c5f3d5e471d525f62c21f86batargetblank5eda41ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/5eda41bf7937915c5f3d5e471d525f62c21f86ba" target="_blank">5eda41b</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltree93e3d77c61cfd9ccf08391c7055dba171db475bctargetblank93e3d77a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltree5eda41bf7937915c5f3d5e471d525f62c21f86batargetblank5eda41ba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/93e3d77c61cfd9ccf08391c7055dba171db475bc" target="_blank">93e3d77</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/5eda41bf7937915c5f3d5e471d525f62c21f86ba" target="_blank">5eda41b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .Rproj.user/50C4F09C/
-    Ignored:    .Rproj.user/shared/notebooks/2A4DA3E8-Educational-facilities/
+    Ignored:    .Rproj.user/6D3A2E0A/bibliography-index/
+    Ignored:    .Rproj.user/6D3A2E0A/ctx/
+    Ignored:    .Rproj.user/6D3A2E0A/explorer-cache/
+    Ignored:    .Rproj.user/6D3A2E0A/jobs/
+    Ignored:    .Rproj.user/6D3A2E0A/presentation/
+    Ignored:    .Rproj.user/6D3A2E0A/profiles-cache/
+    Ignored:    .Rproj.user/6D3A2E0A/sources/
+    Ignored:    .Rproj.user/6D3A2E0A/tutorial/
+    Ignored:    .Rproj.user/6D3A2E0A/unsaved-notebooks/
+    Ignored:    .Rproj.user/6D3A2E0A/viewer-cache/
+    Ignored:    .Rproj.user/6D3A2E0A/viewer_history/
+    Ignored:    .Rproj.user/shared/notebooks/18F66FD1-index/
+    Ignored:    .Rproj.user/shared/notebooks/9EAF1FE1-Educational-facilities/
+    Ignored:    .Rproj.user/shared/notebooks/B933F05A-mics_ch5_17/
+
+Untracked files:
+    Untracked:  data/hh.sav
+
+Unstaged changes:
+    Conflicted: analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -387,6 +408,108 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ktemadarko/Ghana_educational_level/blob/5eda41bf7937915c5f3d5e471d525f62c21f86ba/analysis/index.Rmd" target="_blank">5eda41b</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-22
+</td>
+<td>
+worked on hyperlinks for workflowr project
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/ktemadarko/Ghana_educational_level/5eda41bf7937915c5f3d5e471d525f62c21f86ba/docs/index.html" target="_blank">5eda41b</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-22
+</td>
+<td>
+worked on hyperlinks for workflowr project
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ktemadarko/Ghana_educational_level/blob/8bf0c26beb63f941c45f47710c53d51f4842885c/analysis/index.Rmd" target="_blank">8bf0c26</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-22
+</td>
+<td>
+wrote more code to filter the child 7_14 data set to remove observations that did not meet the criteria
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/ktemadarko/Ghana_educational_level/6775e1365a5246332b50b716a6c9e83c9b180bf8/docs/index.html" target="_blank">6775e13</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-11
+</td>
+<td>
+more edits creating the second tab on shiny app showing the school attendance data
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ktemadarko/Ghana_educational_level/blob/6926909d1087bc0f01a56b29e65ab39836f4d356/analysis/index.Rmd" target="_blank">6926909</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-11
+</td>
+<td>
+going to publish app on shinyapps
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/ktemadarko/Ghana_educational_level/7b9aa6d53c1b87e5a8468c7b54d25981edf9b0f9/docs/index.html" target="_blank">7b9aa6d</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-09
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -432,11 +555,22 @@ Start workflowr project.
 <h2>Learning Inequalities in Ghana</h2>
 <div id="data-availability" class="section level4">
 <h4>Data Availability</h4>
+<div id="education-facilities-data" class="section level5">
+<h5>Education Facilities data</h5>
 <p>The data for this visualization of educational facilities in Ghana was provided by the Humanitarian Open Street Map. (last updated on 1st July, 2020)</p>
 <p>Data downloaded from the <a href="https://data.humdata.org/dataset/hotosm_gha_education_facilities" title="Humanitarian OpenStreetMap">Humanitarian Data Exchange</a> on 7th January, 2022.</p>
 </div>
+<div id="school-attendance-data" class="section level5">
+<h5>School attendance data</h5>
+<p>Ghana school attendance data 3 years and above from the <a href="https://statsghana.gov.gh/gssmain/fileUpload/pressrelease/2021%20PHC%20General%20Report%20Vol%203D_Literacy%20and%20Education.pdf">Ghana 2021 Census Literacy reports</a> published on the Ghana Statistical Service website on 16th December, 2021 and accessed by researcher on 11th January, 2022.</p>
+</div>
+</div>
 <div id="analyses" class="section level4">
 <h4>Analyses</h4>
+<ul>
+<li>An interactive map showing each of the 16 regions of Ghana and the distribution of kindergarten, primary, schools, colleges, universities and libraries. Can be found <a href="Educational-facilities.html">here</a></li>
+</ul>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD - <a href="mics_ch5_17.html">Analysis of the 2018 Ghana Multiple Indicator Cluster Survey 2017/18</a> ======= - <a href="mics_ch5_17.rmd">Analysis of the 2018 Ghana Multiple Indicator Cluster Survey 2017/18</a> &gt;&gt;&gt;&gt;&gt;&gt;&gt; bca61268e76134c15c1b6d9c986de2ba8e16f371</p>
 </div>
 </div>
 

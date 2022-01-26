@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="ktemadarko" />
+
+<meta name="date" content="2022-01-19" />
+
+<title>mics_ch5_17</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Learning_Poverty</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+<li>
+  <a href="Educational-facilities.html">Educational facilities</a>
+</li>
+<li>
+  <a href="mics_ch5_17.html">Socio-economic determinants of learning deficiences</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">mics_ch5_17</h1>
+<h4 class="author">ktemadarko</h4>
+<h4 class="date">2022-01-19</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2022-01-22
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>Ghana_educational_level/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version 1.7.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20220107code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20220107)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20220107code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20220107)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltreebca61268e76134c15c1b6d9c986de2ba8e16f371targetblankbca6126a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/bca61268e76134c15c1b6d9c986de2ba8e16f371" target="_blank">bca6126</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomktemadarkoGhanaeducationalleveltreebca61268e76134c15c1b6d9c986de2ba8e16f371targetblankbca6126a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/ktemadarko/Ghana_educational_level/tree/bca61268e76134c15c1b6d9c986de2ba8e16f371" target="_blank">bca6126</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .Rproj.user/6D3A2E0A/bibliography-index/
+    Ignored:    .Rproj.user/6D3A2E0A/ctx/
+    Ignored:    .Rproj.user/6D3A2E0A/explorer-cache/
+    Ignored:    .Rproj.user/6D3A2E0A/jobs/
+    Ignored:    .Rproj.user/6D3A2E0A/presentation/
+    Ignored:    .Rproj.user/6D3A2E0A/profiles-cache/
+    Ignored:    .Rproj.user/6D3A2E0A/sources/
+    Ignored:    .Rproj.user/6D3A2E0A/tutorial/
+    Ignored:    .Rproj.user/6D3A2E0A/unsaved-notebooks/
+    Ignored:    .Rproj.user/6D3A2E0A/viewer-cache/
+    Ignored:    .Rproj.user/6D3A2E0A/viewer_history/
+    Ignored:    .Rproj.user/shared/notebooks/18F66FD1-index/
+    Ignored:    .Rproj.user/shared/notebooks/9EAF1FE1-Educational-facilities/
+    Ignored:    .Rproj.user/shared/notebooks/B933F05A-mics_ch5_17/
+
+Untracked files:
+    Untracked:  data/hh.sav
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/mics_ch5_17.rmd</code>) and HTML (<code>docs/mics_ch5_17.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ktemadarko/Ghana_educational_level/blob/bca61268e76134c15c1b6d9c986de2ba8e16f371/analysis/mics_ch5_17.rmd" target="_blank">bca6126</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-22
+</td>
+<td>
+worked on hyperlinks for workflowr project
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ktemadarko/Ghana_educational_level/blob/8bf0c26beb63f941c45f47710c53d51f4842885c/analysis/mics_ch5_17.rmd" target="_blank">8bf0c26</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-22
+</td>
+<td>
+wrote more code to filter the child 7_14 data set to remove observations that did not meet the criteria
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ktemadarko/Ghana_educational_level/blob/1f481575484ff6c79b7bb51f0e42c2e964faa60f/analysis/mics_ch5_17.rmd" target="_blank">1f48157</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-22
+</td>
+<td>
+Adding geo coordinates of 10 regions of Ghana (2010) as shapefiles
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ktemadarko/Ghana_educational_level/blob/f0a22f83afd07ecdeb798722ac01641ec6f6ecd9/analysis/mics_ch5_17.rmd" target="_blank">f0a22f8</a>
+</td>
+<td>
+ktemadarko
+</td>
+<td>
+2022-01-19
+</td>
+<td>
+adding Ghana 2017/18 MICS data to the project.
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>About the data set.</p>
+<p>This data set has 8965 observations of 285 variables from the Ghana 2017/18 Multiple Indicator Cluster Survey. The data is available to the public with registration at the <a href="https://mics.unicef.org/surveys">&lt;https://mics.unicef.org/surveys&gt;</a> website.</p>
+<p>Each observation represents the responses a mother gave to a questionnaire about her child aged between 5 and 17 in Ghana. We focused on the questions about foundational skills of Ghanaian children 5-17 years. These questions can be found on pages 574, 591 to 619. <a href="https://mics-surveys-prod.s3.amazonaws.com/MICS6/West%20and%20Central%20Africa/Ghana/2017-2018/Survey%20findings/Ghana%202017-18%20MICS%20Survey%20Findings%20Report_English.pdf">View Ghana 2017/18 MICS Questionnaire here</a>.</p>
+<p>The data is loaded and stored in the variable ch5_17</p>
+<pre class="r"><code>ch5_17 &lt;- read_sav(here::here(&quot;data/fs.sav&quot;))
+hh &lt;- read_sav(here::here(&quot;data/hh.sav&quot;))
+
+
+gha_adm1 &lt;- sf::st_read(here::here(&quot;data/gha_adm10/GHA_adm1.shp&quot;))</code></pre>
+<pre><code>Reading layer `GHA_adm1&#39; from data source 
+  `C:\Users\LENOVO\Documents\Ama_Owusu-Darko_RCode_sample\Ghana_educational_level\data\gha_adm10\GHA_adm1.shp&#39; 
+  using driver `ESRI Shapefile&#39;
+Simple feature collection with 10 features and 9 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -3.255419 ymin: 4.738751 xmax: 1.19177 ymax: 11.1733
+Geodetic CRS:  WGS 84</code></pre>
+<p>The data was filtered and rows where consent for the interview was not given or the interview was not completed or the interview and questionnaire were not in English and interviews were a translated was used were removed.</p>
+<p>hh7 is region</p>
+<pre class="r"><code>gha_adm1_geom &lt;- gha_adm1%&gt;%
+                  select(5,10)%&gt;%
+                  mutate(NAME_1=toupper(NAME_1),
+                         across(c(1),factor))%&gt;%
+                  rename(HH7=1)</code></pre>
+<pre><code>select: dropped 8 variables (ID_0, ISO, NAME_0, ID_1, TYPE_1, …)</code></pre>
+<pre><code>mutate: converted &#39;NAME_1&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>rename: renamed one variable (HH7)</code></pre>
+<pre class="r"><code>#household&lt;-hh%&gt;%
+ # select(1:9)
+
+ch5_17_mini&lt;- ch5_17%&gt;%
+  #filtering data FS10==1 for consent given and FS17 for interview completed.
+  #FS13==11 means interview in English &amp; FS12==11 means the questionnaire was in English and FS15==3 means no interpretor used
+                  mutate(across(c(256),haven::as_factor))%&gt;%
+                  filter(FS10==1 &amp; FS17==1 &amp; FS12==11 &amp; FS13==11 &amp; FS15==3)%&gt;%
+                  select(c(4:6,8),
+                         starts_with(&quot;HH&quot;),
+                         starts_with(&quot;CB&quot;), #child&#39;s background
+                         starts_with(&quot;PR&quot;), #parental involvement
+                         starts_with(&quot;FL&quot;)) #foundational skills</code></pre>
+<pre><code>mutate: converted &#39;HH7&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>filter: removed 7,213 rows (80%), 1,752 rows remaining</code></pre>
+<pre><code>select: dropped 109 variables (LN, FSINT, FS5, FS6, FS7D, …)</code></pre>
+<pre class="r"><code>merge_region_geom &lt;- merge(ch5_17_mini,gha_adm1_geom, by = &quot;HH7&quot;)
+
+ch5_17_small&lt;- ch5_17%&gt;%
+  #filtering data FS10==1 for consent given and FS17 for interview completed.
+  #FS13==11 means interview in English &amp; FS14==11 means English is the native language of the responder
+                    filter(FS10==1 &amp; FS17==1 &amp; FS13==11)%&gt;%
+                    select(c(1:6,8),
+                           starts_with(&quot;CB&quot;), #child&#39;s background
+                           starts_with(&quot;PR&quot;), #parental involvement
+                           starts_with(&quot;FL&quot;)) #foundational skills</code></pre>
+<pre><code>filter: removed 6,783 rows (76%), 2,182 rows remaining</code></pre>
+<pre><code>select: dropped 112 variables (FSINT, FS5, FS6, FS7D, FS7M, …)</code></pre>
+<p>Filtering the rows and columns for child foundational learning skills for Ghanaina children aged 7 to 14 years</p>
+<p>CB7 attended school in the current school year has NAs should be removed???</p>
+<pre class="r"><code>ch7_14&lt;- ch5_17%&gt;%
+  #filtering data FS10==1 for consent given and FS17 for interview completed.
+  #FS13==11 means interview in English &amp; FS12==11 means the questionnaire was in English and FS15==3 means no interpretor used, FL1==1 permission given to interview child by parent, FL3== 1 child also gives consent for interview,
+  
+  #CB7 attended school in the current school year #CB3 child&#39;s age
+  #summary(ch7_14[,1]), FL13==1 practice permission to start reading exercise ,1662 observations
+  #FLINTRO ==1 continue reading exercise 623
+  
+  #FL14 read words correctly 15,17
+  
+  #5600, 5559, 3539
+                  filter(FS10==1 &amp; FS17==1 &amp; FL1==1 &amp; FL3==1 &amp; FL4A==&quot;A&quot;&amp; FL4B==&quot;B&quot;
+                         &amp; FL4C==&quot;C&quot; &amp; FLINTRO==1)%&gt;%
+                  mutate(across(c(33,134:221,224:256,275:285),haven::as_factor))%&gt;%
+                  select(33,starts_with(c(&quot;CB&quot;,&quot;PR&quot;,&quot;FL&quot;,&quot;FS&quot;)), 275:285) #find outcome variable</code></pre>
+<pre><code>filter: removed 5,426 rows (61%), 3,539 rows remaining</code></pre>
+<pre><code>mutate: converted &#39;CB7&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL1&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL2H&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL2M&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL3&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL4A&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL4B&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL4C&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL6A&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL6B&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL7&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL9&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL10&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL13&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL14&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL15&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL16&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL17&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL18&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FLINTRO&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W1&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W2&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W3&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W4&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W5&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W6&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W7&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W8&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W9&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W10&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W11&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W12&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W13&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W14&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W15&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W16&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W17&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W18&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W19&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W20&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W21&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W22&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W23&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W24&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W25&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W26&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W27&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W28&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W29&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W30&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W31&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W32&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W33&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W34&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W35&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W36&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W37&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W38&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W39&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W40&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W41&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W42&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W43&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W44&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W45&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W46&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W47&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W48&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W49&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W50&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W51&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W52&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W53&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W54&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W55&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W56&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W57&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W58&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W59&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W60&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W61&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W62&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W63&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W64&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W65&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W66&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W67&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W68&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL19W69&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL21&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL22A&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL22B&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL22C&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL22D&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL22E&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL23A&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL23B&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL23C&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL23D&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL23E&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL23F&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL24A&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL24B&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL24C&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL24D&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL24E&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL26&#39; from character to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL25A&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL25B&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL25C&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL25D&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL25E&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL27A&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL27B&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL27C&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL27D&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL27E&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL27_shift&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;FL28&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;HH4&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;HH6&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;HH7&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;fshweight&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;wscore&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;windex5&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;windex10&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;wscoreu&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;windex5u&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;windex10u&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;wscorer&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;windex5r&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;windex10r&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>        converted &#39;PSU&#39; from double to factor (0 new NA)</code></pre>
+<pre><code>select: dropped 79 variables (HH1, HH2, LN, CL1A, CL1B, …)</code></pre>
+<p>Join the household data set with the ch5_17 data set which has information about children aged 5 to 17 to get the region data.</p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.2 (2021-11-01)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 22000)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_United States.1252 
+[2] LC_CTYPE=English_United States.1252   
+[3] LC_MONETARY=English_United States.1252
+[4] LC_NUMERIC=C                          
+[5] LC_TIME=English_United States.1252    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] haven_2.4.3     tidylog_1.0.2   sf_1.0-5        here_1.0.1     
+ [5] magrittr_2.0.1  forcats_0.5.1   stringr_1.4.0   dplyr_1.0.7    
+ [9] purrr_0.3.4     readr_2.1.1     tidyr_1.1.4     tibble_3.1.6   
+[13] ggplot2_3.3.5   tidyverse_1.3.1 workflowr_1.7.0
+
+loaded via a namespace (and not attached):
+ [1] httr_1.4.2         sass_0.4.0         jsonlite_1.7.2     modelr_0.1.8      
+ [5] bslib_0.3.1        assertthat_0.2.1   getPass_0.2-2      cellranger_1.1.0  
+ [9] yaml_2.2.1         pillar_1.6.4       backports_1.4.1    glue_1.6.0        
+[13] digest_0.6.29      promises_1.2.0.1   rvest_1.0.2        colorspace_2.0-2  
+[17] clisymbols_1.2.0   htmltools_0.5.2    httpuv_1.6.4       pkgconfig_2.0.3   
+[21] broom_0.7.10       scales_1.1.1       processx_3.5.2     whisker_0.4       
+[25] later_1.3.0        tzdb_0.2.0         git2r_0.29.0       proxy_0.4-26      
+[29] generics_0.1.1     ellipsis_0.3.2     pacman_0.5.1       withr_2.4.3       
+[33] cli_3.1.0          crayon_1.4.2       readxl_1.3.1       evaluate_0.14     
+[37] ps_1.6.0           fs_1.5.2           fansi_0.5.0        xml2_1.3.3        
+[41] class_7.3-19       tools_4.1.2        hms_1.1.1          lifecycle_1.0.1   
+[45] munsell_0.5.0      reprex_2.0.1       callr_3.7.0        compiler_4.1.2    
+[49] jquerylib_0.1.4    e1071_1.7-9        rlang_0.4.12       classInt_0.4-3    
+[53] units_0.7-2        grid_4.1.2         rstudioapi_0.13    rmarkdown_2.11    
+[57] gtable_0.3.0       DBI_1.1.2          R6_2.5.1           lubridate_1.8.0   
+[61] knitr_1.37         fastmap_1.1.0      utf8_1.2.2         rprojroot_2.0.2   
+[65] KernSmooth_2.23-20 stringi_1.7.6      Rcpp_1.0.7         vctrs_0.3.8       
+[69] dbplyr_2.1.1       tidyselect_1.1.1   xfun_0.29         </code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

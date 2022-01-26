@@ -12,8 +12,24 @@ editor_options:
 
 #### Data Availability
 
-The data for this visualization of educational facilities in Ghana was provided by the Humanitarian Open Street Map. (last updated on 1st July, 2020)
+##### Education Facilities data
+
+The data for this visualization of educational facilities in Ghana was provided by the Humanitarian Open Street Map.
+(last updated on 1st July, 2020)
 
 Data downloaded from the [Humanitarian Data Exchange](https://data.humdata.org/dataset/hotosm_gha_education_facilities "Humanitarian OpenStreetMap") on 7th January, 2022.
 
+##### School attendance data
+
+Ghana school attendance data 3 years and above from the [Ghana 2021 Census Literacy reports](https://statsghana.gov.gh/gssmain/fileUpload/pressrelease/2021%20PHC%20General%20Report%20Vol%203D_Literacy%20and%20Education.pdf) published on the Ghana Statistical Service website on 16th December, 2021 and accessed by researcher on 11th January, 2022.
+
 #### Analyses
+
+-   An interactive map showing each of the 16 regions of Ghana and the distribution of kindergarten, primary, schools, colleges, universities and libraries.
+    Can be found [here](Educational-facilities.html)
+
+<<<<<<< HEAD
+-   [Analysis of the 2018 Ghana Multiple Indicator Cluster Survey 2017/18](mics_ch5_17.html)
+=======
+-   [Analysis of the 2018 Ghana Multiple Indicator Cluster Survey 2017/18](mics_ch5_17.rmd)
+>>>>>>> bca61268e76134c15c1b6d9c986de2ba8e16f371

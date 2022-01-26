@@ -1,0 +1,150 @@
+---
+title: "mics_ch5_17"
+author: "ktemadarko"
+date: "2022-01-19"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+pacman::p_load(tidyverse,magrittr,here,sf,tidylog, haven)
+```
+
+About the data set.
+
+This data set has 8965 observations of 285 variables from the Ghana 2017/18 Multiple Indicator Cluster Survey.
+The data is available to the public with registration at the [\<https://mics.unicef.org/surveys>](https://mics.unicef.org/surveys) website.
+
+Each observation represents the responses a mother gave to a questionnaire about her child aged between 5 and 17 in Ghana.
+We focused on the questions about foundational skills of Ghanaian children 5-17 years.
+These questions can be found on pages 574, 591 to 619.
+[View Ghana 2017/18 MICS Questionnaire here](https://mics-surveys-prod.s3.amazonaws.com/MICS6/West%20and%20Central%20Africa/Ghana/2017-2018/Survey%20findings/Ghana%202017-18%20MICS%20Survey%20Findings%20Report_English.pdf).
+
+The data is loaded and stored in the variable ch5_17
+
+```{r load_data, message=FALSE, warning=FALSE}
+ch5_17 <- read_sav(here::here("data/fs.sav"))
+hh <- read_sav(here::here("data/hh.sav"))
+
+
+gha_adm1 <- sf::st_read(here::here("data/gha_adm10/GHA_adm1.shp"))
+```
+
+The data was filtered and rows where consent for the interview was not given or the interview was not completed or the interview and questionnaire were not in English and interviews were a translated was used were removed.
+
+hh7 is region
+
+```{r}
+gha_adm1_geom <- gha_adm1%>%
+                  select(5,10)%>%
+                  mutate(NAME_1=toupper(NAME_1),
+                         across(c(1),factor))%>%
+                  rename(HH7=1)
+                  
+
+#household<-hh%>%
+ # select(1:9)
+
+ch5_17_mini<- ch5_17%>%
+  #filtering data FS10==1 for consent given and FS17 for interview completed.
+  #FS13==11 means interview in English & FS12==11 means the questionnaire was in English and FS15==3 means no interpretor used
+                  mutate(across(c(256),haven::as_factor))%>%
+                  filter(FS10==1 & FS17==1 & FS12==11 & FS13==11 & FS15==3)%>%
+                  select(c(4:6,8),
+                         starts_with("HH"),
+                         starts_with("CB"), #child's background
+                         starts_with("PR"), #parental involvement
+                         starts_with("FL")) #foundational skills
+
+merge_region_geom <- merge(ch5_17_mini,gha_adm1_geom, by = "HH7")
+
+ch5_17_small<- ch5_17%>%
+  #filtering data FS10==1 for consent given and FS17 for interview completed.
+  #FS13==11 means interview in English & FS14==11 means English is the native language of the responder
+                    filter(FS10==1 & FS17==1 & FS13==11)%>%
+                    select(c(1:6,8),
+                           starts_with("CB"), #child's background
+                           starts_with("PR"), #parental involvement
+                           starts_with("FL")) #foundational skills
+
+
+```
+
+```{r}
+
+```
+
+Filtering the rows and columns for child foundational learning skills for Ghanaina children aged 7 to 14 years
+
+CB7 attended school in the current school year has NAs should be removed???
+
+```{r}
+ch7_14<- ch5_17%>%
+  #filtering data FS10==1 for consent given and FS17 for interview completed.
+  #FS13==11 means interview in English & FS12==11 means the questionnaire was in English and FS15==3 means no interpretor used, FL1==1 permission given to interview child by parent, FL3== 1 child also gives consent for interview,
+  
+  #CB7 attended school in the current school year #CB3 child's age
+  #summary(ch7_14[,1]), FL13==1 practice permission to start reading exercise ,1662 observations
+  #FLINTRO ==1 continue reading exercise 623
+  
+  #FL14 read words correctly 15,17
+  
+  #5600, 5559, 3539
+                  filter(FS10==1 & FS17==1 & FL1==1 & FL3==1 & FL4A=="A"& FL4B=="B"
+                         & FL4C=="C" & FLINTRO==1)%>%
+                  mutate(across(c(33,134:221,224:256,275:285),haven::as_factor))%>%
+                  select(33,starts_with(c("CB","PR","FL","FS")), 275:285) #find outcome variable
+```
+
+Join the household data set with the ch5_17 data set which has information about children aged 5 to 17 to get the region data.
+
+```{r}
+ch7<-ch7_14%>%
+  mutate(read_story=if_else(FL20B<8,"cannot read 90%","can read 90%"), .after= "FL20B")%>%
+  mutate(literal_comp=if_else(str_detect(FL22A,"CORRECT")&
+                              str_detect(FL22B,"CORRECT")&
+                              str_detect(FL22C,"CORRECT")&
+                              str_detect(FL22D,"CORRECT")&
+                              str_detect(FL22E,"CORRECT"),
+                              "Yes","No"), .after= "FL22E")%>%
+  filter(!is.na(literal_comp))%>%
+  mutate(proficient_in_reading = if_else(read_story=="can read 90%" &
+                                        literal_comp=="Yes","Yes","No"),.after= "literal_comp") %>%
+  mutate(across(c(read_story, literal_comp,proficient_in_reading),as_factor))%>%
+  mutate(child_id= row_number(), .before= "CB7")
+                                                
+```
+
+Exploring the distribution of FL20B (variable for how many words a child missed in reading
+
+```{r missed_words}
+summary(ch7$FL20B)
+
+summary(factor(ch7$FL20B))
+
+boxplot(ch7$FL20B)
+
+plot(ch7$FL20B)
+
+hist(ch7$FL20B)
+```
+
+Outcome variable is reading proficiency derived from the combination of whether a child was able to read 90% of the words in the story and answer the 5 questions after.
+
+It is a binary variable No or Yes.
+
+### Predicting whether a child will be proficient in reading or not
+
+We used mixed-effects modelling because there is clustering at the regional and primary sampling unit level.
+Children from the same PSU are likely to go to the same primary schools.
+
+Counting observations by PSU and by Region
+
+```{r}
+ch7%>% count(PSU)
+
+summary(as_factor(ch5_17$PSU))
+```
