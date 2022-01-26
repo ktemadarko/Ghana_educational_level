@@ -138,6 +138,11 @@ It is a binary variable No or Yes.
 
 ### Predicting whether a child will be proficient in reading or not
 
+```{r}
+summary(ch7$proficient_in_reading)
+```
+
+
 We used mixed-effects modelling because there is clustering at the regional and primary sampling unit level.
 Children from the same PSU are likely to go to the same primary schools.
 
