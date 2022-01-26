@@ -102,5 +102,49 @@ ch7_14<- ch5_17%>%
 Join the household data set with the ch5_17 data set which has information about children aged 5 to 17 to get the region data.
 
 ```{r}
+ch7<-ch7_14%>%
+  mutate(read_story=if_else(FL20B<8,"cannot read 90%","can read 90%"), .after= "FL20B")%>%
+  mutate(literal_comp=if_else(str_detect(FL22A,"CORRECT")&
+                              str_detect(FL22B,"CORRECT")&
+                              str_detect(FL22C,"CORRECT")&
+                              str_detect(FL22D,"CORRECT")&
+                              str_detect(FL22E,"CORRECT"),
+                              "Yes","No"), .after= "FL22E")%>%
+  filter(!is.na(literal_comp))%>%
+  mutate(proficient_in_reading = if_else(read_story=="can read 90%" &
+                                        literal_comp=="Yes","Yes","No"),.after= "literal_comp") %>%
+  mutate(across(c(read_story, literal_comp,proficient_in_reading),as_factor))%>%
+  mutate(child_id= row_number(), .before= "CB7")
+                                                
+```
 
+Exploring the distribution of FL20B (variable for how many words a child missed in reading
+
+```{r missed_words}
+summary(ch7$FL20B)
+
+summary(factor(ch7$FL20B))
+
+boxplot(ch7$FL20B)
+
+plot(ch7$FL20B)
+
+hist(ch7$FL20B)
+```
+
+Outcome variable is reading proficiency derived from the combination of whether a child was able to read 90% of the words in the story and answer the 5 questions after.
+
+It is a binary variable No or Yes.
+
+### Predicting whether a child will be proficient in reading or not
+
+We used mixed-effects modelling because there is clustering at the regional and primary sampling unit level.
+Children from the same PSU are likely to go to the same primary schools.
+
+Counting observations by PSU and by Region
+
+```{r}
+ch7%>% count(PSU)
+
+summary(as_factor(ch5_17$PSU))
 ```

@@ -2,8 +2,8 @@
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
         }
     ],
-    "path": "~/Ama_Owusu-Darko_RCode_sample/Ghana_educational_level/code"
+    "path": "~/Ama_Owusu-Darko_RCode_sample/Ghana_educational_level/docs"
 }
